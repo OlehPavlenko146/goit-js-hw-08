@@ -10,8 +10,6 @@ const refs = {
 
 populateFormFields();
 
-const formData = {};
-
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 1000));
 
@@ -31,6 +29,9 @@ function onFormSubmit(e) {
 }
 
 function onFormInput(e) {
-  formData[e.target.name] = e.target.value;
+  const formData = {
+    email: refs.email.value,
+    message: refs.textarea.value,
+  };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
